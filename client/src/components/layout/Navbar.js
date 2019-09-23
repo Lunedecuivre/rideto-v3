@@ -3,21 +3,23 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { logout } from "../../actions/auth";
-
-const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
+import SearchField from "react-search-field";
+const Navbar = ({ auth: { isAuthenticated, loading, user }, logout }) => {
   const authLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Communauté</Link>
+        <SearchField placeholder="Search item" />
       </li>
       <li>
         <Link to="/posts">Posts</Link>
       </li>
       <li>
-        <Link to="/dashboard">
-          <i className="fas fa-user" />{" "}
-          <span className="hide-sm">Dashboard</span>
-        </Link>
+        {isAuthenticated && (
+          <Link to={"/profile/" + user._id}>
+            <i className="fas fa-user" />{" "}
+            <span className="hide-sm">Profil</span>
+          </Link>
+        )}
       </li>
       <li>
         <a onClick={logout} href="#!">
@@ -31,9 +33,6 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
-        <Link to="/profiles">Communauté</Link>
-      </li>
-      <li>
         <Link to="/register">Inscription</Link>
       </li>
       <li>
@@ -45,7 +44,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
   return (
     <nav className="navbar bg-dark">
       <h1>
-        <Link to="/">Rideto</Link>
+        <Link to="/posts">Rideto</Link>
       </h1>
       {!loading && (
         <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>

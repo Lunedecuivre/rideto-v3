@@ -398,7 +398,7 @@ button {
   align-items: center;
   justify-content: center;
   text-align: center;
-  width: 30vw;
+  width: 25vw;
 }
 
 .profile-top img {
@@ -583,7 +583,7 @@ button {
 
   .profile-top img,
   .profile img {
-    width: 200px;
+    width: 100px;
     margin: auto;
   }
 
@@ -673,4 +673,9 @@ button {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+}
+
+.profile-component {
+  display: flex;
+  flex-direction: row;
 }

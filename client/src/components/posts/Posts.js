@@ -7,6 +7,7 @@ import PostForm from "./PostForm";
 import Questionbar from "../layout/Questionbar";
 
 import { getPosts } from "../../actions/post";
+import DashboardPosts from "../dashboard/DashboardPosts";
 
 const Posts = ({ getPosts, post: { posts, loading } }) => {
   useEffect(() => {
@@ -17,6 +18,7 @@ const Posts = ({ getPosts, post: { posts, loading } }) => {
     <Spinner />
   ) : (
     <Fragment>
+      <DashboardPosts />
       <PostForm />
       <div className="posts">
         {posts.map(post => (

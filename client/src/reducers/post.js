@@ -6,8 +6,9 @@ import {
   ADD_POST,
   GET_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT
-} from '../actions/types';
+  REMOVE_COMMENT,
+  GET_POSTS_BY_USER
+} from "../actions/types";
 
 const initialState = {
   posts: [],
@@ -30,6 +31,12 @@ export default function(state = initialState, action) {
       return {
         ...state,
         post: payload,
+        loading: false
+      };
+    case GET_POSTS_BY_USER:
+      return {
+        ...state,
+        posts: payload,
         loading: false
       };
     case ADD_POST:
@@ -75,6 +82,7 @@ export default function(state = initialState, action) {
         },
         loading: false
       };
+
     default:
       return state;
   }
